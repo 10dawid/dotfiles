@@ -1,0 +1,54 @@
+# ~/.common_aliases
+# --- Narzędzia ---
+# Kolorowe ls (wymaga zainstalowanego 'exa')
+if command -v exa >/dev/null; then
+    alias ls='exa'
+    alias ll='exa -la'
+    alias la='exa -lah'
+else
+    alias ls='ls --color=auto'
+    alias ll='ls -la'
+    alias la='ls -A'
+fi
+
+# Cat -> Batcat (wymaga 'bat')
+if command -v batcat >/dev/null; then
+    alias cat='batcat'
+fi
+
+# Grep -> Ripgrep (wymaga 'rg')
+if command -v rg >/dev/null; then
+    alias grep='rg --color=auto'
+else
+    alias grep='grep --color=auto'
+fi
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias diff='diff --color=auto'
+
+# --- Sieć ---
+alias ip='ip -c'
+# Sprawdzenie czy grc jest zainstalowane dla ping
+if command -v grc >/dev/null; then
+    alias ping='grc ping'
+    alias tail='grc tail'
+else
+    alias ping='ping -c 5'
+fi
+
+# --- Git ---
+alias git='git -c color.ui=auto'
+alias glog='git log --decorate --graph --all'
+alias gstat='git status'
+alias gadd='git add -A'
+
+# --- Inne ---
+alias radio-fmsk='mpv http://live.slovakradio.sk:8000/FM_256.mp3'
+alias less='less -R'
+alias tree='tree -C'
+
+# --- Praca ---
+alias mcs="source ~/pyenvs/default1/bin/activate"
+alias desk='~/.screenlayout/abc.sh'
+alias undesk='~/.screenlayout/sam.sh'
