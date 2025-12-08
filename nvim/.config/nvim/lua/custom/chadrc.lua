@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = 'bearded-arc' }
+M.ui = { theme = 'penumbra_light', transparency = true }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 return M

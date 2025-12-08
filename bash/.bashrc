@@ -51,3 +51,5 @@ fi
 if [ -f ~/.common_aliases ]; then
     . ~/.common_aliases
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

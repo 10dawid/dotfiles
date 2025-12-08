@@ -1,16 +1,19 @@
 # ~/.zshrc
 
-# --- Ścieżki i Zmienne ---
 export TERM=xterm-256color
 export COLORTERM=xterm-truecolor
 . "$HOME/.local/bin/env" 2>/dev/null
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-# --- Autouzupełnianie (Completion) ---
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    IS_MAC=true
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    IS_LINUX=true
+fi
+
 autoload -Uz compinit
 compinit
 
-# --- Historia Zsh ---
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE="$HOME/.zsh_history"
@@ -45,29 +48,28 @@ if command -v pyenv >/dev/null; then
     eval "$(pyenv init - zsh)"
 fi
 
-# --- Ładowanie aliasów ---
 if [ -f ~/.common_aliases ]; then
     . ~/.common_aliases
 fi
 
-# --- Pluginy i Dodatki ---
 
-# GRC (Generic Colouriser)
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
-# FZF
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
-# Zsh Autosuggestions
 if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# Zsh Syntax Highlighting 
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-neofetch
+if [[ "$IS_MAC" == true ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+elif [[ "$IS_LINUX" == true ]]; then
+    if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
+fi

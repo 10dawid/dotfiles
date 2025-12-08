@@ -12,8 +12,8 @@ else
 fi
 
 # Cat -> Batcat (wymaga 'bat')
-if command -v batcat >/dev/null; then
-    alias cat='batcat'
+if command -v bat >/dev/null; then
+    alias cat='bat'
 fi
 
 # Grep -> Ripgrep (wymaga 'rg')

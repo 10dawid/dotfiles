@@ -58,8 +58,14 @@ local plugins = {
         "pyright",
         "html-lsp",
         "css-lsp",
+        "jdtls",
       },
     },
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    dependencies = { "neovim/nvim-lspconfig" },
   },
   {
     "neovim/nvim-lspconfig",
