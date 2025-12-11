@@ -19,3 +19,11 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   })
 end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+  end,
+})
