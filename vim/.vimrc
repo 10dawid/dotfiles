@@ -22,6 +22,5 @@ map <F6> :nohlsearch<CR>
 set hlsearch
 set nonumber norelativenumber
 
-
 map u <NOP>
 map U <undo>

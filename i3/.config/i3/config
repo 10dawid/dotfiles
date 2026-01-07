@@ -256,8 +256,12 @@ set $mantle    #181825
 set $crust     #11111b
 
 
-
-
+set $white     #ffffff
+set $slate     #70798c
+set $spring    #35ff69
+set $shadow    #1a181b
+set $black     #000000
+set $wmelon    #e83151
 
 
 
@@ -267,12 +271,12 @@ set $crust     #11111b
 
 
 # target                 title     bg    text      indicator    border
-client.focused           $mantle   $mauve $mantle  $rosewater $mauve
-client.focused_inactive  $overlay0 $base  $text    $rosewater $overlay0
-client.unfocused         $overlay0 $base  $text    $rosewater $overlay0
-client.urgent            $peach    $base  $peach   $overlay0  $peach
-client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
-client.background        $base
+client.focused           $spring   $black $white   $black $black
+client.focused_inactive  $black    $black $white   $black $black
+client.unfocused         $black    $black $white   $black $black
+client.urgent            $black    $black $white   $black $black
+client.placeholder       $black    $black $white   $black $black
+client.background        $black
 
 # floating dla konsoli 
 for_window [class="^mtsTrainConsole$"] floating enable
@@ -281,13 +285,13 @@ for_window [class="^mtsTrainConsole$"] floating enable
 bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
         colors {
-            #colors   border bg text
-            background $base
-            statusline #ffffff
-            separator  $mauve
-            focused_workspace  $mauve $mauve $mantle
-            inactive_workspace $peach $base $text
-            urgent_workspace   $peach $base $peach
+            #colors             border bg text
+            background         $black
+            statusline         #ffffff
+            separator          $white
+            focused_workspace  $white $black  $spring
+            inactive_workspace $black $black  $white
+            urgent_workspace   $black $black  $white
         }
 }
 
