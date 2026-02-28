@@ -42,11 +42,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # --- Pyenv (Zsh) ---
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv >/dev/null; then
-    eval "$(pyenv init - zsh)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv >/dev/null; then
+#     eval "$(pyenv init - zsh)"
+# fi
+
+# dbus setup
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+
+
 
 if [ -f ~/.common_aliases ]; then
     . ~/.common_aliases
