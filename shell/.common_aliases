@@ -45,6 +45,7 @@ alias glog='git log --decorate --graph --all'
 alias gstat='git status'
 alias gadd='git add -A'
 alias vomit='git commit -m'
+alias gbranches="git branch -l --format '%(authordate:iso) %(align:4)%(upstream:trackshort)%(end) %(align:40)%(refname:short)%(end) %(objectname) %(authoremail)' --sort='refname:lstrip=-1'"
 
 # --- Inne ---
 alias radio-fmsk='mpv http://live.slovakradio.sk:8000/FM_256.mp3'
@@ -55,3 +56,4 @@ alias tree='tree -C'
 alias mcs="source ~/pyenvs/default1/bin/activate"
 alias desk='~/.screenlayout/abc.sh'
 alias undesk='~/.screenlayout/sam.sh'
+alias mutt-local='mutt -F ~/etc/mutt/mutt-account-macro-zimbra'

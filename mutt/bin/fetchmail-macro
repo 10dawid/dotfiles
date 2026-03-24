@@ -1,0 +1,21 @@
+#!/bin/sh
+
+fetchmail -f - <<EOF
+set no bouncemail
+set no spambounce
+set softbounce
+
+poll mail.macrosystem.pl proto IMAP
+  timeout 30
+  user "dleczycki@macrosystem.pl"
+  pass $(decrypt-ssh ~/etc/mutt/mutt-pass-macro.encrypted.base64)
+  keep
+  ssl
+  #sslproto TLS1
+  sslcertck
+  sslcertpath "/etc/ssl/certs/"
+  #folder INBOX.Archive
+  folder Archive
+  #folder INBOX
+  mda "procmail ~/.procmailrc-for-fetchmail"
+EOF

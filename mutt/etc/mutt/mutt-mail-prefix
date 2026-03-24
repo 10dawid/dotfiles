@@ -1,0 +1,129 @@
+set mbox_type=Maildir
+set folder="~/Mail/"
+set mbox="+"
+set spoolfile="+"
+
+set ssl_force_tls=yes
+set pgp_use_gpg_agent=yes
+set crypt_use_gpgme=yes
+
+set imap_check_subscribed=yes
+set imap_passive=no
+set imap_keepalive=120
+
+set confirmappend=no
+set header_cache = "~/Mail/"
+set message_cachedir = "~/Mail/"
+#set message_cache_clean=yes
+
+
+
+# from /etc/Muttrc.d/colors.rc for local Mutt 2.0
+color normal	white black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator black cyan
+color markers	brightred black
+color quoted	green black
+color signature cyan black
+color status	brightgreen blue
+color tilde	blue black
+color tree	red black
+
+# other changes for Mutt 2.0
+set sort=threads
+set sort_browser_mailboxes=date
+set user_agent=yes
+
+
+
+color index green default ~P
+#color index color9 default "~h 'X-Redmine-Issue-Assignee: dleczycki'"
+color index black color11 ~U
+#color index white color9 "~U ~h 'X-Redmine-Issue-Assignee: dleczycki'"
+color index yellow default ~F
+color header color14 default ^From:
+color header color14 default ^Subject:
+color header color14 default ^CC:
+color header color14 default ^To:
+color header color14 default ^Reply-To:
+color quoted  color12 default
+color quoted1 color4  default
+color quoted2 color13 default
+color quoted3 color5  default
+color signature color8 default
+#source ~/etc/mutt/mutt-colors-solarized-dark-16.muttrc
+
+#set quote_regexp="^([|>:}#]|[A-Z]+>)+"
+#set quote_regexp="^([|>:}#]|X+)+"
+#set quote_regexp="^([ \t]*[|>:}#])+"
+
+unignore bcc
+unignore x-notes
+
+set editor=vim
+#set wrap=78
+
+set folder_format="%2C %t %N %4n %F %2l %-8.8u %-8.8g %8s %d %f"
+set query_command="~/bin/find-address private %s"
+set query_format="%4c %t %-40.40a %-40.40n %?e?(%e)?"
+set index_format="%4C %Z %{%b %d %H:%M} %-25.25L (%?l?%6l&%6c?) %s"
+#set date_format="!%a, %b %d, %Y at %H:%M:%S%p %Z"
+set forward_format="Fwd: %s"
+
+set timeout=30
+set connect_timeout=5
+set sleep_time=0
+set sort_aux=last-threads
+set edit_headers=yes
+set strict_threads=yes
+set include_onlyfirst=yes
+
+# for Outlook using RFC 2047 for parameters (violating standards),
+# instead of using RFC 2231 (does not change mutt's naming mechanisms)
+set rfc2047_parameters
+
+set quit=ask-no
+
+macro index X "<purge-message>"
+macro index,pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro browser F "<shell-escape>fetchmail<Enter>" "run fetchmail"
+
+macro pager M "<pipe-message> bin/multipart2html.py > mail.html" "multipart to HTML"
+
+set realname="Dawid Łęczycki"
+set from="<dleczycki@macrosystem.pl>"
+
+set reverse_name=yes
+set reverse_realname=no
+
+#auto_view text/html
+#auto_view text/calendar
+
+set print_command='cat > ~/mail.txt'
+
+##################
+# VERY IMPORTANT #
+##################
+account-hook . \
+  'set ssl_force_tls=yes;\
+   unset imap_user;\
+   unset imap_pass'
+##################
+
+
+
+macro index Q \
+          "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+          "search mail (using notmuch)"
+
+# Defaults on folder entry
+folder-hook . \
+  'unmy_hdr Reply-To;\
+   unmy_hdr CC;\
+   set trash="+.Trash";\
+   set record="+";\
+   set postponed="+.Postponed"'

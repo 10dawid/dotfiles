@@ -1,6 +1,7 @@
 URxvt.geometry: 82x26
 ! may be customized through menu: Ctrl + middle button
 !URxvt.urgentOnBell:  true
+URxvt.silent: true
 URxvt.scrollBar: yes
 URxvt.scrollBar_right: yes
 URxvt.scrollBar_floating: yes

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Address book"
+book="$1"
+shift
+address="$@"
+case "$book" in
+    "macro")
+        suffix="macro"
+        ;;
+    *)
+        suffix="private"
+        ;;
+esac
+grep -v "^[ \t]" "${HOME}/etc/mutt/addressbook-${suffix}" | grep -i -- "$address"

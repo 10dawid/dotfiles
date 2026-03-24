@@ -1,0 +1,51 @@
+source ~/etc/mutt/mutt-mail-prefix
+
+set my_password="`decrypt-ssh ~/etc/mutt/mutt-pass-macro.encrypted.base64`"
+
+macro browser F "<shell-escape>~/bin/fetchmail-macro<Enter>" "run fetchmail"
+
+set query_command="~/bin/find-address macro %s"
+set editor="~/bin/mutt-editor"
+
+set from="Dawid Łęczycki <dleczycki@macrosystem.pl>"
+set signature=~/etc/signatures/poczta-macro.txt
+
+set smime_ca_location=/home/dawid/etc/mutt/macro-smime
+
+set my_macro_account="imaps://mail.macrosystem.pl/"
+
+mailboxes ` \
+  echo -n "+ "; \
+  find ~/Mail -maxdepth 1 -type d -name ".*" -printf "+'%f' ";`\
+  $my_macro_account
+
+
+account-hook "imaps://mail.macrosystem.pl/" \
+  'set imap_user=dleczycki@macrosystem.pl;\
+   set imap_pass=${my_password};'
+
+# account-hook "imaps://mail.macrosystem.pl/" \
+#   'set imap_user=dleczycki@macrosystem.pl;'
+
+
+folder-hook "imaps://mail.macrosystem.pl/" \
+  'set record="$my_macro_account";\
+   set trash="${my_macro_account}Trash";'
+
+set smtp_url=smtp://dleczycki@macrosystem.pl:${my_password}@mail.macrosystem.pl:587
+
+subjectrx '\[EXTERNAL\] *' '⚑ %L%R'
+
+send-hook . \
+  'set signature=/home/dawid/etc/signatures/poczta-macro.txt'
+
+send-hook ! '~t @macrosystem.pl' \
+  'set signature=~/etc/signatures/poczta-macro-full.txt'
+
+folder-hook "." \
+  'macro index S "<tag-prefix-cond><set-flag>O<tag-prefix><save-message>${record}Logwatch" "save to the logwatch archive"'
+
+folder-hook "." \
+  'macro index s "<tag-prefix-cond><set-flag>O<tag-prefix><save-message>${record}Archive" "save to the archive"'
+
+#source ~/etc/mutt/mutt-mail-suffix

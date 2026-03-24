@@ -1,0 +1,2 @@
+folder-hook "." \
+  'macro index s "<tag-prefix-cond><set-flag>O<tag-prefix><save-message>$record.Archive" "save to the archive"'

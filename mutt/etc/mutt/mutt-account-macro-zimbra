@@ -1,0 +1,51 @@
+source ~/etc/mutt/mutt-mail-prefix
+
+set my_password="`decrypt-ssh ~/etc/mutt/mutt-pass-macro.encrypted.base64`"
+
+unset message_cachedir
+
+set from="Dawid Łęczycki <dleczycki@macro.local>"
+set signature=~/etc/signatures/poczta-macro.txt
+
+set smime_ca_location=/home/dawid/etc/mutt/macro-smime
+set certificate_file=/home/dawid/etc/mutt/mutt_certificates_macrozimbra
+
+set ssl_starttls=no
+set ssl_force_tls=no
+
+##################
+# VERY IMPORTANT #
+##################
+account-hook . \
+  'set ssl_force_tls=yes;\
+   unset imap_user;\
+   unset imap_pass'
+##################
+
+set my_macro_account="imaps://zimbra8.macro.local:7993/"
+
+mailboxes `echo -n "+ "; find ~/Mail -maxdepth 1 -type d -name ".*" -printf "+'%f' "`\
+  $my_macro_account \
+  ~/Mail/Archive
+
+account-hook "${my_macro_account}" \
+  'set imap_user=dleczycki@macro.local;\
+   set imap_pass=${my_password};'
+
+folder-hook "imaps://zimbra8.macro.local:7993/" \
+  'set record="$my_macro_account";\
+   set trash="${my_macro_account}Trash";'
+
+set smtp_url=smtps://dleczycki@macro.local:${my_password}@zimbra8.macro.local:465
+
+#send2-hook . \
+#  'set sendmail="$HOME/bin/sendmail -v -C $HOME/.esmtprc-zimbra -X $HOME/var/log/esmtp.log -f dleczycki@macro.local"'
+
+
+folder-hook "." \
+  'macro index S "<tag-prefix-cond><set-flag>O<tag-prefix><save-message>${record}backup-logs" "save to backup-logs directory"'
+
+source ~/etc/mutt/mutt-mail-suffix
+
+folder-hook "." \
+  'macro index s "<tag-prefix><save-message>${record}Archive" "save to the archive"'

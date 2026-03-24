@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sed -i '0,/^$/b head; n; :head /^Subject:/s/\[EXTERNAL\] *\(Re: \)\?//' -- "$1"
+sed -i '/^>[ >]*-- $/,/^$/b foot; b; :foot /^$/b; d' -- "$1"
+exec vim -- "$1"
