@@ -1,0 +1,15 @@
+#text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; w3m -I %{charset} -T text/html
+#text/calendar; printvcalendar; copiousoutput;
+text/calendar; printvcalendar | less
+application/ics; printvcalendar | less
+#image/jpeg; gpicview %s
+#image/png; gpicview %s
+#image/gif; gpicview %s
+#image/svg+xml; gpicview %s
+image/jpeg; eog %s
+image/png; eog %s
+image/gif; eog %s
+image/svg+xml; eog %s
+application/pdf; evince %s
+video/mp4; /usr/bin/mpv --no-terminal --force-window -- %s; test=test -n "$DISPLAY"

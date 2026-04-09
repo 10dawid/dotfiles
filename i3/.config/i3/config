@@ -229,57 +229,65 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#colors
+# CDE Color Palette
+set $cde_teal      #4a818c
+set $cde_tan       #ae9a8e
+set $cde_dark_tan  #8e7e73
+set $cde_light_tan #c6b8af
+set $cde_white     #ffffff
+set $cde_black     #000000
 
-set $rosewater #f5e0dc
-set $flamingo  #f2cdcd
-set $pink      #f5c2e7
-set $mauve     #cba6f7
-set $red       #f38ba8
-set $maroon    #eba0ac
-set $peach     #fab387
-set $yellow    #f9e2af
-set $green     #a6e3a1
-set $teal      #94e2d5
-set $sky       #89dceb
-set $sapphire  #74c7ec
-set $blue      #89b4fa
-set $lavender  #b4befe
-set $text      #cdd6f4
-set $subtext1  #bac2de
-set $subtext0  #a6adc8
-set $overlay2  #9399b2
-set $overlay1  #7f849c
-set $overlay0  #6c7086
-set $surface2  #585b70
-set $surface1  #45475a
-set $surface0  #313244
-set $base      #1e1e2e
-set $mantle    #181825
-set $crust     #11111b
+# Old colors (commented out)
+#set $rosewater #f5e0dc
+#set $flamingo  #f2cdcd
+#set $pink      #f5c2e7
+#set $mauve     #cba6f7
+#set $red       #f38ba8
+#set $maroon    #eba0ac
+#set $peach     #fab387
+#set $yellow    #f9e2af
+#set $green     #a6e3a1
+#set $teal      #94e2d5
+#set $sky       #89dceb
+#set $sapphire  #74c7ec
+#set $blue      #89b4fa
+#set $lavender  #b4befe
+#set $text      #cdd6f4
+#set $subtext1  #bac2de
+#set $subtext0  #a6adc8
+#set $overlay2  #9399b2
+#set $overlay1  #7f849c
+#set $overlay0  #6c7086
+#set $surface2  #585b70
+#set $surface1  #45475a
+#set $surface0  #313244
+#set $base      #1e1e2e
+#set $mantle    #181825
+#set $crust     #11111b
 
+#set $white     #ffffff
+#set $slate     #70798c
+#set $spring    #35ff69
+#set $shadow    #1a181b
+#set $black     #000000
+#set $wmelon    #e83151
 
-set $white     #ffffff
-set $slate     #70798c
-set $spring    #35ff69
-set $shadow    #1a181b
-set $black     #000000
-set $wmelon    #e83151
+# Old target settings (commented out)
+#client.focused           $spring   $black $white   $black $black
+#client.focused_inactive  $black    $black $white   $black $black
+#client.unfocused         $black    $black $white   $black $black
+#client.urgent            $black    $black $white   $black $black
+#client.placeholder       $black    $black $white   $black $black
+#client.background        $black
 
-
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-
-
-# target                 title     bg    text      indicator    border
-client.focused           $spring   $black $white   $black $black
-client.focused_inactive  $black    $black $white   $black $black
-client.unfocused         $black    $black $white   $black $black
-client.urgent            $black    $black $white   $black $black
-client.placeholder       $black    $black $white   $black $black
-client.background        $black
+# CDE Window Colors
+# target                 border        bg           text        indicator    child_border
+client.focused           $cde_teal     $cde_teal    $cde_white  $cde_teal    $cde_teal
+client.focused_inactive  $cde_tan      $cde_tan     $cde_black  $cde_tan     $cde_tan
+client.unfocused         $cde_tan      $cde_tan     $cde_black  $cde_tan     $cde_tan
+client.urgent            $cde_dark_tan $cde_dark_tan $cde_white $cde_dark_tan $cde_dark_tan
+client.placeholder       $cde_black    $cde_black    $cde_white $cde_black    $cde_black
+client.background        $cde_tan
 
 # floating dla konsoli 
 for_window [class="^mtsTrainConsole$"] floating enable
@@ -288,13 +296,23 @@ for_window [class="Gtkrusty"] floating enable
 bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
         colors {
-            #colors             border bg text
-            background         $black
-            statusline         #ffffff
-            separator          $white
-            focused_workspace  $white $black  $spring
-            inactive_workspace $black $black  $white
-            urgent_workspace   $black $black  $white
+            # Old bar colors (commented out)
+            #background         $black
+            #statusline         #ffffff
+            #separator          $white
+            #focused_workspace  $white $black  $spring
+            #inactive_workspace $black $black  $white
+            #urgent_workspace   $black $black  $white
+
+            # CDE Bar Colors
+            background         $cde_tan
+            statusline         $cde_black
+            separator          $cde_dark_tan
+            #                  border        bg           text
+            focused_workspace  $cde_teal     $cde_teal    $cde_white
+            active_workspace   $cde_tan      $cde_tan     $cde_black
+            inactive_workspace $cde_tan      $cde_tan     $cde_black
+            urgent_workspace   $cde_dark_tan $cde_dark_tan $cde_white
         }
 }
 
