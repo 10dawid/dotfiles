@@ -49,7 +49,8 @@ export NVM_DIR="$HOME/.nvm"
 # fi
 
 # dbus setup
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)"
+export DBUS_SYSTEM_BUS_ADDRESS="unix:path=/opt/homebrew/var/run/dbus/system_bus_socket"
 
 
 
