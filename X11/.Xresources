@@ -7,8 +7,8 @@ URxvt.scrollBar_right: yes
 URxvt.scrollBar_floating: yes
 URxvt.scrollColor: #2a2a2a
 !URxvt.background: #000000
-URxvt.background: rgb:06/06/06
-URxvt.color0: rgb:06/06/06
+URxvt.background: #000000
+URxvt.color0: #000000
 !URxvt.background: rgb:10/10/10
 URxvt.foreground: #babdb6
 URxvt.font: terminus-18

@@ -48,11 +48,18 @@ export NVM_DIR="$HOME/.nvm"
 #     eval "$(pyenv init - zsh)"
 # fi
 
-# dbus setup
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)"
-export DBUS_SYSTEM_BUS_ADDRESS="unix:path=/opt/homebrew/var/run/dbus/system_bus_socket"
-
-
+if [[ "$IS_MAC" == true ]]; then
+    if command -v launchctl >/dev/null; then
+        export DBUS_SESSION_BUS_ADDRESS="unix:path=$(launchctl getenv DBUS_LAUNCHD_SESSION_BUS_SOCKET)"
+    fi
+    export DBUS_SYSTEM_BUS_ADDRESS="unix:path=/opt/homebrew/var/run/dbus/system_bus_socket"
+    
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+elif [[ "$IS_LINUX" == true ]]; then
+    if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
+fi
 
 if [ -f ~/.common_aliases ]; then
     . ~/.common_aliases
@@ -70,12 +77,4 @@ fi
 
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if [[ "$IS_MAC" == true ]]; then
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-elif [[ "$IS_LINUX" == true ]]; then
-    if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    fi
 fi

@@ -51,6 +51,7 @@ alias gbranches="git branch -l --format '%(authordate:iso) %(align:4)%(upstream:
 alias radio-fmsk='mpv http://live.slovakradio.sk:8000/FM_256.mp3'
 alias less='less -R'
 alias tree='tree -C'
+alias man='MANWIDTH=72 man'
 
 # --- Praca ---
 alias mcs="source ~/pyenvs/default1/bin/activate"
