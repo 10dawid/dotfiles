@@ -22,5 +22,7 @@ map <F6> :nohlsearch<CR>
 set hlsearch
 set nonumber norelativenumber
 
+let g:zig_fmt_autosave = 0
+
 map u <NOP>
 map U <undo>
