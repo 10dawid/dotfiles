@@ -25,23 +25,19 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
 
-# Wyłączenie opcji
 unsetopt APPEND_HISTORY
 unsetopt EXTENDED_HISTORY
 unsetopt HIST_EXPIRE_DUPS_FIRST
 unsetopt HIST_FIND_NO_DUPS
 unsetopt HIST_SAVE_NO_DUPS
 
-# --- Oh My Posh (Zsh) ---
 if command -v oh-my-posh >/dev/null; then
     eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/darkblood.omp.json)"
 fi
 
-# --- NVM (Zsh) ---
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# --- Pyenv (Zsh) ---
 # export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # if command -v pyenv >/dev/null; then
