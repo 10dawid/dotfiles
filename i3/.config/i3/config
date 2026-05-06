@@ -1,5 +1,8 @@
 
-set $mod Mod1
+set $mod Mod4
+
+# swap Alt_L and Super_L keys
+exec --no-startup-id xmodmap -e "remove mod1 = Alt_L" -e "remove mod4 = Super_L" -e "keysym Alt_L = Super_L" -e "keysym Super_L = Alt_L" -e "add mod1 = Alt_L" -e "add mod4 = Super_L"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
