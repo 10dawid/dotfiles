@@ -61,8 +61,8 @@ bindsym F1 exec brightnessctl set 10%-
 
 
 #binding do alt tab
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
+bindsym Mod4+Tab focus right
+bindsym Mod4+Shift+Tab focus left
 
 
 #binding do printscreen 
