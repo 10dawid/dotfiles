@@ -15,8 +15,8 @@ URxvt.font: terminus-18
 !URxvt.font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
 URxvt.saveLines: 8192
 URxvt.perl-ext-common: default,tabbed,confirm-paste,keyboard-select
-!URxvt.keysym.M-a: perl:keyboard-select:activate
-URxvt.keysym.Super_L: perl:keyboard-select:activate
+URxvt.keysym.M-a: perl:keyboard-select:activate
+!URxvt.keysym.Super_L: perl:keyboard-select:activate
 URxvt.tabbed.tab-bg: 8
 URxvt.cutchars: "‘\"’“”&()*,;<=>?[]^{|}:$#"
 URxvt.pasteOneLine: yes
