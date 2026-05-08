@@ -52,3 +52,4 @@ alias mcs="source ~/pyenvs/default1/bin/activate"
 alias desk='~/.screenlayout/abc.sh'
 alias undesk='~/.screenlayout/sam.sh'
 alias mutt-local='mutt -F ~/etc/mutt/mutt-account-macro-zimbra'
+alias fix-kb='setxkbmap -option altwin:swap_lalt_lwin'
