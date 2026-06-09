@@ -35,7 +35,7 @@ else
 fi
 
 alias vlock='vlock -a'
-
+alias ncspot='flatpak run io.github.hrkfdn.ncspot'
 alias git='git -c color.ui=auto'
 alias glog='git log --decorate --graph --all'
 alias gstat='git status'
