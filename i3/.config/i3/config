@@ -295,6 +295,7 @@ client.background        $cde_tan
 # floating dla konsoli 
 for_window [class="^mtsTrainConsole$"] floating enable
 for_window [class="Gtkrusty"] floating enable
+for_window [class="firmwareconfig"] floating enable
 
 bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
