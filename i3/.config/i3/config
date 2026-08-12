@@ -44,9 +44,9 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # turn off bell for current X session
 exec --no-startup-id xset b off
 
-bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #szybki dostep do obslugi bluetoot przez bluemana
@@ -56,8 +56,8 @@ bindsym $mod+b exec blueman-manager
 bindsym $mod+Shift+x exec --no-startup-id i3lock --color=000000 -f
 
 #ustawienie jasności ekranu F1 F2
-bindsym F2 exec brightnessctl set +10%
-bindsym F1 exec brightnessctl set 10%-
+#bindsym F2 exec brightnessctl set +10%
+#bindsym F1 exec brightnessctl set 10%-
 
 
 #binding do alt tab
