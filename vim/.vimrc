@@ -1,3 +1,4 @@
+execute pathogen#infect()
 " Copy marked fragment to the X clipboard on CTRL+C
 vmap <C-c> "+y
 imap <C-v> <Esc>"+pa
@@ -23,6 +24,13 @@ set hlsearch
 set nonumber norelativenumber
 
 let g:zig_fmt_autosave = 0
+let g:ackprg = 'rg --vimgrep --'
+
+let g:gundo_prefer_python3 = 1
+nnoremap <F5> :GundoToggle<CR>
+
+map <leader>tr :set list<CR>:set cursorline<CR>:set vartabstop=32,6,40,4,10,6,36,8,4,4,4,8,12,8<CR>
+set listchars=tab:▸\ ,eol:¬
 
 map u <NOP>
 map U <undo>

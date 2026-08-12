@@ -2,8 +2,8 @@
 
 if command -v exa >/dev/null; then
     alias ls='exa'
-    alias ll='exa -la'
-    alias la='exa -lah'
+    alias ll='exa -la --git'
+    alias la='exa -lah --git'
 else
     alias ls='ls --color=auto'
     alias ll='ls -la'
