@@ -60,6 +60,10 @@ elif [[ "$IS_LINUX" == true ]]; then
     fi
 fi
 
+if [ -f ~/.rbenv/bin/rbenv ]; then
+    eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+fi
+
 if [ -f ~/.common_aliases ]; then
     . ~/.common_aliases
 fi
