@@ -1,10 +1,12 @@
+set nocompatible
 execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 " Copy marked fragment to the X clipboard on CTRL+C
 vmap <C-c> "+y
 imap <C-v> <Esc>"+pa
 
-set nocompatible
-filetype plugin on
 set wildmode=longest,list
 set background=dark
 if has('termguicolors')

@@ -12,6 +12,7 @@ let g:colors_name = "1337"
 set background=dark
 
 let s:bg          = ['#000000', 'NONE']
+let s:term_bg     = has('gui_running') ? s:bg : ['NONE', 'NONE']
 let s:fg           = ['#F8F8F2', 255]
 let s:caret        = ['#F8F8F0', 255]
 let s:invisibles   = ['#3B3A32', 237]
@@ -67,13 +68,13 @@ function! s:Hi(group, fg, bg, ...)
     execute l:cmd
 endfunction
 
-call s:Hi('Normal',       s:fg, s:bg)
+call s:Hi('Normal',       s:fg, s:term_bg)
 call s:Hi('Cursor',       s:bg, s:caret)
 call s:Hi('CursorLine',   [], s:line_hl)
 call s:Hi('CursorLineNr', s:fg, s:line_hl, 'bold')
 call s:Hi('CursorColumn', [], s:line_hl)
-call s:Hi('LineNr',       s:linenr_fg, s:bg)
-call s:Hi('SignColumn',   s:linenr_fg, s:bg)
+call s:Hi('LineNr',       s:linenr_fg, s:term_bg)
+call s:Hi('SignColumn',   s:linenr_fg, s:term_bg)
 call s:Hi('Visual',       [], s:selection)
 call s:Hi('VisualNOS',    [], s:selection)
 call s:Hi('StatusLine',   s:fg, s:statusline_bg, 'bold')
@@ -89,8 +90,9 @@ call s:Hi('PmenuThumb',   [], s:comment)
 call s:Hi('Search',       s:bg, s:number)
 call s:Hi('IncSearch',    s:bg, s:keyword)
 call s:Hi('MatchParen',   s:bg, s:attribute, 'bold')
-call s:Hi('NonText',      s:invisibles, s:bg)
-call s:Hi('SpecialKey',   s:invisibles, s:bg)
+call s:Hi('NonText',      s:invisibles, s:term_bg)
+call s:Hi('SpecialKey',   s:invisibles, s:term_bg)
+call s:Hi('EndOfBuffer',  s:invisibles, s:term_bg)
 call s:Hi('Folded',       s:comment, s:statusline_bg)
 call s:Hi('FoldColumn',   s:comment, s:bg)
 call s:Hi('ColorColumn',  [], s:line_hl)
