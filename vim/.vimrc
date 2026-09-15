@@ -7,7 +7,11 @@ set nocompatible
 filetype plugin on
 set wildmode=longest,list
 set background=dark
-colorscheme vividchalk
+if has('termguicolors')
+    set termguicolors
+endif
+colorscheme 1337
+"colorscheme vividchalk
 syntax on
 set expandtab
 set sw=4
