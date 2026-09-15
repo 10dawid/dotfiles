@@ -19,16 +19,16 @@ set message_cachedir = "~/Mail/"
 
 
 # from /etc/Muttrc.d/colors.rc for local Mutt 2.0
-color normal	white black
-color attachment brightyellow black
-color hdrdefault cyan black
+color normal	white default
+color attachment brightyellow default
+color hdrdefault cyan default
 color indicator black cyan
-color markers	brightred black
-color quoted	green black
-color signature cyan black
-color status	brightgreen blue
-color tilde	blue black
-color tree	red black
+color markers	brightred default
+color quoted	green default
+color signature cyan default
+color status	brightgreen default
+color tilde	blue default
+color tree	red default
 
 # other changes for Mutt 2.0
 set sort=threads
