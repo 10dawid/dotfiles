@@ -62,6 +62,8 @@ fi
 
 if [ -f ~/.rbenv/bin/rbenv ]; then
     eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+elif command -v rbenv >/dev/null; then
+    eval "$(rbenv init - zsh)"
 fi
 
 if [ -f ~/.common_aliases ]; then
