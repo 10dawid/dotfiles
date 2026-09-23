@@ -9,9 +9,6 @@ imap <C-v> <Esc>"+pa
 
 set wildmode=longest,list
 set background=dark
-if has('termguicolors')
-    set termguicolors
-endif
 colorscheme 1337
 "colorscheme vividchalk
 syntax on
