@@ -31,9 +31,8 @@ unsetopt HIST_EXPIRE_DUPS_FIRST
 unsetopt HIST_FIND_NO_DUPS
 unsetopt HIST_SAVE_NO_DUPS
 
-if command -v oh-my-posh >/dev/null; then
-    eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/darkblood.omp.json)"
-fi
+setopt PROMPT_SUBST
+PS1='${debian_chroot:+($debian_chroot)}%B%F{green}%n@%m%b%f:%l:%B%F{blue}%1~%b%f%(!.#.$) '
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

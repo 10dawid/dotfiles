@@ -4,3 +4,4 @@ mutt/etc/mutt/mutt-pass-macro.encrypted.base64
 mutt/etc/mutt/mutt_certificates_macrozimbra
 .DS_Store
 vim/.vim/.netrwhist
+oh-my-posh/
